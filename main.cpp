@@ -1,5 +1,6 @@
 #include<iostream>
 #include "Hangman.h"
+#include "Checkers.h"
 
 int main()
 {
@@ -26,6 +27,8 @@ int main()
 		}
 		else if(option == 5)
 		{
+			Checkers Cprogram;
+			Cprogram.run();
 		}
 		else if(option == 6)
 		{
