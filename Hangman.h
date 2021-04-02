@@ -1,6 +1,8 @@
-//Hangman.h
-//Author: Brooke Jackson
-//Creates and runs hangman game
+/**
+* @Hangman.h
+* @Author: Brooke Jackson
+* @Holds methods for the Hangman class
+**/
 
 #ifndef HANGMAN_H
 #define HANGMAN_H
