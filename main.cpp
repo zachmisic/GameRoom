@@ -1,11 +1,12 @@
 #include<iostream>
 #include "Hangman.h"
 #include "Checkers.h"
+#include "snake.h"
 
 int main()
 {
 	int option;
-	
+
 	do
 	{
 		std::cout<<"\nMain Menu\n\n1. Hangman\n2. Memory\n3. Snake\n4. Blackjack\n5. Checkers\n6. Quit\n\n";
@@ -21,6 +22,8 @@ int main()
 		}
 		else if(option == 3)
 		{
+			Snake snakeProgram;
+			snakeProgram.run();
 		}
 		else if(option == 4)
 		{
@@ -39,6 +42,6 @@ int main()
 			std::cout<<"Invaid option\n";
 		}
 	}while(option != 6);
-	
+
 return(0);
 }
