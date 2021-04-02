@@ -1,3 +1,9 @@
+/**
+* @Hangman.cpp
+* @Author: Brooke Jackson
+* @Defines methods for the Hangman class
+**/
+
 #include "Hangman.h"
 #include<iostream>
 
