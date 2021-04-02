@@ -1,3 +1,7 @@
+//Hangman.h
+//Author: Brooke Jackson
+//Creates and runs hangman game
+
 #ifndef HANGMAN_H
 #define HANGMAN_H
 
