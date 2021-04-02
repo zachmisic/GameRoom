@@ -7,6 +7,7 @@
 #include "Hangman.h"
 #include<iostream>
 
+//hangman constructor
 Hangman::Hangman()
 {
 	std::string word = "";
@@ -17,6 +18,7 @@ Hangman::Hangman()
 	int guessesLeft = 6;
 }
 
+//runs game and calls other methods
 void Hangman::run()
 {
 do
@@ -68,6 +70,7 @@ do
 std::cout<<"Returning to main menu...\n\n";
 }
 
+//converts word into dashed HMword
 void Hangman::wordGenerator()
 {
 	for(int i=0; i<word.length(); i++)
@@ -83,6 +86,7 @@ void Hangman::wordGenerator()
 	}
 }
 
+//generates board
 void Hangman::display()
 {
 	std::cout<<"\n";
@@ -95,6 +99,7 @@ void Hangman::display()
 	std::cout<<"Guesses Left: "<<guessesLeft<<"\n";
 }
 
+//generates hangman person
 void Hangman::personDisplay()
 {
 	if(guessesLeft == 6)
@@ -127,6 +132,7 @@ void Hangman::personDisplay()
 	}
 }
 
+//checks for winner
 void Hangman::isWinner()
 {
 	wordTracker = 0;
