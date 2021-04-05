@@ -3,6 +3,7 @@
 #include "Checkers.h"
 #include "snake.h"
 #include "Memory.h"
+#include "blackjack.h"
 
 int main()
 {
