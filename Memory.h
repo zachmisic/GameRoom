@@ -17,8 +17,9 @@ class Memory {
 private:
 
 	int size = 4;
-	char** board;
-	char cards[][] = { 'A','B','C','D','A','B','C','D','E','F','G','H','E','F','G','H' };
+	char board[size][size];
+	char boardHid[size][size];
+	char cards[] = { 'A','B','C','D','A','B','C','D','E','F','G','H','E','F','G','H' };
 
 
 public:
@@ -29,6 +30,7 @@ public:
 	* @return N/A
 	**/
 	Memory();
+	~Memory();
 
 	/**
 	* @pre An instance of "Memory" has been created
