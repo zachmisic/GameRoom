@@ -2,6 +2,7 @@
 #include "Hangman.h"
 #include "Checkers.h"
 #include "snake.h"
+#include "Memory.h"
 
 int main()
 {
