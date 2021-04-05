@@ -1,0 +1,26 @@
+FULL HOUR COUNT: 7
+
+3/17/21 (Wednesday)
+Total Hours: 1
+Description:
+Talked as a group about the project
+
+4/3/21 (Saturday)
+Total Hours: 2
+Description:
+Implemented the card class
+-Added private members
+-Added constructor
+-Added ability to print a card's information
+
+4/4/21 (Sunday)
+Total Hours: 4
+Description:
+Implemented the deck class
+-Utilized the card class to create a deck array full of cards
+-Added methods that would be used by the blackjack executive class
+Implemented the blackjack class
+-Uses the deck class to deal and draw from the deck
+-Game proceeds using the deck methods
+Documented all methods and functions across all classes.
+Included relevant comments before all functions.
