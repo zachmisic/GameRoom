@@ -1,0 +1,21 @@
+FULL HOUR COUNT: 6
+
+3/17/21 (Wednesday)
+7:00pm - 8:00pm
+Total Hours: 1
+Description:
+Group meeting to discus Project 3 goal
+
+4/3/21 (Saturday)
+4:00pm - 5:00pm
+Total Hours: 1
+Description:
+-Setting out goals for memory game
+-Beginning files, implementation brainstorming
+
+4/4/21 (Sunday)
+8:00pm - 12:00am
+Total Hours: 4
+Description:
+-Writing memory game
+-Integrating into group code base
