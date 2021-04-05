@@ -23,30 +23,37 @@ void Memory::run() {
 	bool sameFlag;
 
 	while (pairsFound < 8) {
-
 		display();
-		while (xchoice1 > 3 || xchoice1 < 0) {
-			std::cout << "Column: ";
-			std::cin >> xchoice1;
-		}
-		while (ychoice1 > 3 || ychoice1 < 0) {
-			std::cout << "Row: ";
-			std::cin >> ychoice1;
-		}
+
+		do {
+			while (xchoice1 > 3 || xchoice1 < 0) {
+				std::cout << "Column: ";
+				std::cin >> xchoice1;
+			}
+			while (ychoice1 > 3 || ychoice1 < 0) {
+				std::cout << "Row: ";
+				std::cin >> ychoice1;
+			}
+		} while (board[xchoice1][ychoice1] == '-');
 		boardHid[xchoice1][ychoice1] = board[xchoice1][ychoice1];
 		display();
 
 		sameFlag = true;
 
 		while (sameFlag) {
-			while (xchoice2 > 3 || xchoice2 < 0) {
-				std::cout << "Column: ";
-				std::cin >> xchoice2;
-			}
-			while (ychoice2 > 3 || ychoice2 < 0) {
-				std::cout << "Row: ";
-				std::cin >> ychoice2;
-			}
+			do {
+
+				while (xchoice2 > 3 || xchoice2 < 0) {
+					std::cout << "Column: ";
+					std::cin >> xchoice2;
+				}
+				while (ychoice2 > 3 || ychoice2 < 0) {
+					std::cout << "Row: ";
+					std::cin >> ychoice2;
+				}
+
+			} while (board[xchoice2][ychoice2] == '-');
+
 			if (!((xchoice1 == xchoice2) && (ychoice1 == ychoice2)) {
 				sameFlag = false;
 			}
