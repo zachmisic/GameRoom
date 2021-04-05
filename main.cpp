@@ -20,6 +20,8 @@ int main()
 		}
 		else if(option == 2)
 		{
+			blackjack myBlackJack;
+			myBlackJack.run();
 		}
 		else if(option == 3)
 		{
