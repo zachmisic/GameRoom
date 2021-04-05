@@ -26,12 +26,11 @@ class Snake
     //dimensions of board
     int width;
     int height;
-    char wall;
 
 
   public:
-    int snake[50][2];
-    int board[25][50];         //max snake size
+    int snake[25][2];
+    int board[25][25];         //max snake size
     int food[2]={0,0};        //snake food
     int score;
     int snakeStartLen;
@@ -40,6 +39,7 @@ class Snake
     int split;
     int xmovement;
     int ymovement;
+    char wall;
 
     /**
     		* @pre The class is created
