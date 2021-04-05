@@ -21,8 +21,8 @@ int main()
 		}
 		else if(option == 2)
 		{
-			blackjack myBlackJack;
-			myBlackJack.run();
+			Memory Mprogram;
+			Mprogram.run();
 		}
 		else if(option == 3)
 		{
@@ -31,6 +31,8 @@ int main()
 		}
 		else if(option == 4)
 		{
+			blackjack myBlackJack;
+			myBlackJack.run();
 		}
 		else if(option == 5)
 		{
