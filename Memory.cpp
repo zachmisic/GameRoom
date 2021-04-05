@@ -18,13 +18,68 @@ Memory::~Memory() {}
 void Memory::run() {
 	populate();
 	int pairsFound = 0;
-	int xchoice, ychoice;
+	int xchoice1=-1, ychoice1=-1;
+	int xchoice2 = -1, ychoice2 = -1;
+	bool sameFlag;
 
 	while (pairsFound < 8) {
+		display();
 
+		do {
+			while (xchoice1 > 3 || xchoice1 < 0) {
+				std::cout << "Column: ";
+				std::cin >> xchoice1;
+			}
+			while (ychoice1 > 3 || ychoice1 < 0) {
+				std::cout << "Row: ";
+				std::cin >> ychoice1;
+			}
+		} while (board[xchoice1][ychoice1] == '-');
+		boardHid[xchoice1][ychoice1] = board[xchoice1][ychoice1];
+		display();
+
+		sameFlag = true;
+
+		while (sameFlag) {
+			do {
+
+				while (xchoice2 > 3 || xchoice2 < 0) {
+					std::cout << "Column: ";
+					std::cin >> xchoice2;
+				}
+				while (ychoice2 > 3 || ychoice2 < 0) {
+					std::cout << "Row: ";
+					std::cin >> ychoice2;
+				}
+
+			} while (board[xchoice2][ychoice2] == '-');
+
+			if (!((xchoice1 == xchoice2) && (ychoice1 == ychoice2)) {
+				sameFlag = false;
+			}
+		}
+		boardHid[xchoice2][ychoice2] = board[xchoice2][ychoice2];
 		display();
 
 
+		if (board[xchoice1][ychoice1] == board[xchoice2][ychoice2]) {
+			board[xchoice1][ychoice1] = '-';
+			board[xchoice2][ychoice2] = '-';
+			boardHid[xchoice1][ychoice1] = '-';
+			boardHid[xchoice2][ychoice2] = '-';
+			pairsFound++;
+			std::cout << "You found a matching pair!\n";
+		}
+		else {
+			boardHid[xchoice1][ychoice1] = '#';
+			boardHid[xchoice2][ychoice2] = '#';
+			std::cout << "Sorry! That pair did not match\n";
+		}
+
+		xchoice1 = -1;
+		ychoice1 = -1;
+		xchoice2 = -1;
+		ychoice2 = -1;
 
 	}
 
@@ -63,7 +118,7 @@ void Memory::display() {
 		for (int y = 0; y < size; y++) {
 			std::cout << boardHid[x][y] << " ";
 		}
-		std::cout <<'\n';
+		std::cout <<'\n\n';
 
 	}
 

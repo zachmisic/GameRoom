@@ -1,0 +1,36 @@
+FULL HOUR COUNT: 12.5
+
+3/17/21 (Wednesday)
+7:00pm - 8:00pm
+Total Hours: 1
+Description:
+Team meeting to discuss
+
+
+3/18/21 (Thursday)
+6:30-8:00
+Total Hours: 1.5
+Description:
+-Wrote up requirements, drew diagrams, gathered team ideas, emailed TA
+
+3/22/21 (Monday)
+1:00pm-4:00pm
+Total Hours: 3
+Description:
+-Watched tutorials for a windows game, looked up linux libraries that I could use
+-looked up kbhit
+-Figured out how to use virtual machine on my computer
+-downloaded necessary file transfer programs
+
+3/27/21 (Saturday)
+9:00am-14:00am 
+Total Hours: 5
+Description:
+-wrote my game in full
+
+4/1/21 (Thursday)
+7:30-9:30pm
+Total Hours: 2
+Description:
+-Added final functionality to my game, made it class based rather than just 1 cpp file
+-pushed it to GitHub repo and made sure it compiled with the makefile and main
