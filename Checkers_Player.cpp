@@ -1,3 +1,9 @@
+/**
+* @Checkers_Player.cpp
+* @Author: Andrew Hughes
+* @implements methods for checkers player10
+**/
+
 #include "Checkers_Player.h"
 
 

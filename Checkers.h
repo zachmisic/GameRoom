@@ -1,3 +1,9 @@
+/**
+* @Checkers.h
+* @Author: Andrew Hughes
+* @Holds methods for checkers
+**/
+
 #ifndef CHECKERS_H
 #define CHECKERS_H
 

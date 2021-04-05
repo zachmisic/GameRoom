@@ -1,3 +1,9 @@
+/**
+* @Checkers.cpp
+* @Author: Andrew Hughes
+* @implements methods for checkers
+**/
+
 #include "Checkers.h"
 
 Checkers::Checkers()

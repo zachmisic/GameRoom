@@ -1,0 +1,6 @@
+total hours 13 hr
+
+03/26 - 4 hr
+03/27 - 4 hr
+03/28 - 3 hr
+04/02 - 2 hr // just documentation and uml work
