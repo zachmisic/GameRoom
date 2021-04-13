@@ -16,4 +16,5 @@ Hours: 1.5
 
 4/13 (Tuesday)
 Hours: 0.5
+-code clean up
 -documentation
