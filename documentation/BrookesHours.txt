@@ -1,19 +1,19 @@
-﻿Hour Count: 7
+﻿Hour Count: 6
 
 
-3/17 (Wednesday)
-Hours: 0.5
--Meeting with TA
--Group meeting to discuss project 3
+4/7 (Wednesday)
+Hours: 4
+-writing code
 
 
 
 
-3/22 (Monday)
-Hours: 6
--coding Hangman.cpp, Hangman.h, main.cpp and makefile
+4/12 (Monday)
+Hours: 1.5
+-debugging
+-code writing
 
 
-3/30 (Tuesday)
+4/13 (Tuesday)
 Hours: 0.5
 -documentation
