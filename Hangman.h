@@ -41,14 +41,27 @@ class Hangman
 		Hangman();
 	
 		/**
-		* @pre we need the game to run
-		* @post game is run, communicates with all other classes
+		* @pre we need run the mode menu
+		* @post mode menu is run, communicates with classic and battle class
 		* @param none
 		* @return N/A
 		**/
 		void run();
-	
+		
+		/**
+		* @pre we need classic mode to run
+		* @post classic mode is run, communicates with all other classes
+		* @param none
+		* @return N/A
+		**/
 		void classic();
+	
+		/**
+		* @pre we need battle mode to run
+		* @post battle mode is run, communicates with all other classes
+		* @param none
+		* @return N/A
+		**/
 		void battle();
 	
 		/**
@@ -75,9 +88,36 @@ class Hangman
 		**/
 		void personDisplay(int player);
 	
+		/**
+		* @pre need to set number of guesses
+		* @post number of guesses set
+		* @param int player
+		* @return N/A
+		**/
 		void setGuessNum(int player);
+	
+		/**
+		* @pre need to check guess against previous guesses
+		* @post guess checked
+		* @param int player
+		* @return N/A
+		**/
 		void guessChecker(int player);
+	
+		/**
+		* @pre need to update the dashed word
+		* @post dashed word updated
+		* @param int player
+		* @return N/A
+		**/
 		void wordUpdater(int player);
+	
+		/**
+		* @pre need to flip player
+		* @post player flipped
+		* @param N/A
+		* @return N/A
+		**/
 		void flipPlayer();
 	
 		/**
