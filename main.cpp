@@ -26,7 +26,12 @@ int main()
 		}
 		else if(option == 3)
 		{
-			Snake snakeProgram;
+			int height, width;
+			std::cout<<"Enter the size of your game board:\nWidth:";
+			std::cin>>width;
+			std::cout<<"Height:";
+			std::cin>>height;
+			Snake snakeProgram(width, height);
 			snakeProgram.run();
 		}
 		else if(option == 4)

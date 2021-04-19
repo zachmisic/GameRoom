@@ -29,8 +29,8 @@ class Snake
 
 
   public:
-    int snake[25][2];
-    int board[25][25];         //max snake size
+    int** board;
+    int** snake;         //max snake size
     int food[2]={0,0};        //snake food
     int score;
     int snakeStartLen;
@@ -39,7 +39,6 @@ class Snake
     int split;
     int xmovement;
     int ymovement;
-    char wall;
 
     /**
     		* @pre The class is created
@@ -48,6 +47,14 @@ class Snake
     		* @return N/A
     		**/
     Snake();
+
+    /**
+        * @pre The class is created
+        * @post The class is created
+        * @param board size (width and height)
+        * @return N/A
+        **/
+    Snake(int wid, int hgt);
 
     /**
 		* @pre none

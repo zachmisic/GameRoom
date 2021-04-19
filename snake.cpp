@@ -1,42 +1,96 @@
+/*--------------------------------------------------------------
+ *
+ *@file: snake.cpp
+ *@author: Chloe Thornton
+ *@assignment: EECS-448 project 3
+ *@description: This file holds all method definitions for the Snake class.
+ *@date: Friday, April 2nd 2021
+ *
+ --------------------------------------------------------------*/
+
 #include <iostream>
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/ioctl.h>
 #include <termios.h>
 #include <stropts.h>
+#include "snake.h"
 
 using namespace std;
 
-//dimensions of board
-const int width = 50;
-const int height = 25;
-const char wall = '#';
+Snake::Snake(){
+  board = new int* [25];
+  for(int x=0; x<25; x++){
+      board[x]= new int[25];
+    }
+  snake = new int* [25];
+  for(int y=0; y<25; y++){
+      snake[y]= new int[2];
+    }
+
+  score = 0;
+  snakeStartLen = 3;
+  snakeSpeedX = 1;
+  snakeSpeedY = 1;
+  split = 200;
+
+  for(int i=0; i<25; i++){
+    snake[i][0]=0;
+    snake[i][1]=0;
+    snake[i][2]=0;
+ }
+ for(int j=0; j<25; j++){
+   for(int k=0; k<25; k++){
+     snake[j][k] = 0;
+   }
+ }
+
+  width=25;
+  height=25;
+  //wall='#';
+
+  xmovement = snakeSpeedX;
+  ymovement = 0;
+}
+
+Snake::Snake(int wid,int hgt){
+  board = new int* [hgt];
+  for(int x=0; x<hgt; x++){
+      board[x]= new int[wid];
+    }
+  for(int j=0; j<hgt; j++){
+    for(int k=0; k<wid; k++){
+      board[j][k] = 0;
+    }
+  }
+  snake = new int* [hgt];
+  for(int y=0; y<hgt; y++){
+      snake[y]= new int[2];
+    }
+
+  score = 0;
+  snakeStartLen = 3;
+  snakeSpeedX = 1;
+  snakeSpeedY = 1;
+  split = 200;
+    for(int i=0; i<hgt; i++){
+    snake[i][0]=0;
+    snake[i][1]=0;
+    snake[i][2]=0;
+  }
+    width=wid;
+    height=hgt;
+  xmovement = snakeSpeedX;
+  ymovement = 0;
+}
+
 const char* terminalclear = "clear";
-
-//arrays and data structures to hold snake data and board data
-int board[height][width];
-int snake[50][2];         //max snake size
-int food[2]={0,0};        //snake food
-int score = 0;
-int snakeStartLen = 3;
-int snakeSpeedX = 1;
-int snakeSpeedY = 1;
-int split = 200;          //time between frames for animation
-
-
-//temporary global variables
-int px, py, nx, ny;       //coordinates for updating snake movement
-char k;
-
-
-int xmovement = snakeSpeedX;
-int ymovement = 0;        //when snake starts out it moves horizontally but not vertically
-
 
 //found from flipcode.com/archives/_kbhit_for_Linux
 //recognize keyboard hits
-int keyboardhit() {
+int Snake::keyboardhit() {
   static const int STDIN = 0;
   static bool isInit = false;
 
@@ -55,20 +109,19 @@ int keyboardhit() {
 
 
 //make board
-void create_board(void) {
-  int i;
-  for(i=0; i<width; i++){ //top and bottom
+void Snake::create_board(void) {
+  for(int i=0; i<width; i++){ //top and bottom
     board[0][i]=1;
-    board[height-1][i]=1;
+    board[width-1][i]=1;
   }
-  for(i=0; i<height; i++){ //left and right
-    board[i][0]=1;
-    board[i][24]=1;
+  for(int j=0; j<height; j++){ //left and right
+    board[j][0]=1;
+    board[j][height-1]=1;
   }
 }
 
 //initialize snake
-void create_snake(void){
+void Snake::create_snake(void){
   snake[0][0]=3;
   snake[0][1]=3;
 
@@ -83,10 +136,14 @@ void create_snake(void){
 
   snake[4][0]=3+4;
   snake[4][1]=3;
+
+  snake[5][0]=3+5;
+  snake[5][1]=3;
 }
 
 //snake movement
-void snake_coordinate_updates(void){
+void Snake::snake_coordinate_updates(void){
+  int px, py, nx, ny;
   px = snake[0][0];
   py = snake[0][1];
   snake[0][0] = px + xmovement;
@@ -105,7 +162,7 @@ void snake_coordinate_updates(void){
 }
 
 //install snake onto the board
-void install_snake (const int val){
+void Snake::install_snake (const int val){
   int x=0, y=0;
   for(int i=0; i<snakeStartLen; i++){
     x = snake[i][0];
@@ -117,13 +174,18 @@ void install_snake (const int val){
 }
 
 //print board onto console
-void print_board(void){
+void Snake::print_board(void){
   int s;
-  for(int i=0; i<height; i++){
+  for(int i=0; i<width; i++){
     for(int j=0; j<height; j++){
       s = board[i][j];
       if(s==1){
-        cout << wall;     //wall or snake
+       if(i==0 || i==width-1 || j==0 || j==height-1){
+       cout << "|";}
+       else{
+          cout << "#";
+        }
+            //wall or snake
       }
       else if (s==2){
         cout << "+";  //+ is food
@@ -137,12 +199,12 @@ void print_board(void){
 }
 
 //clear console
-void clear_board(void){
+void Snake::clear_board(void){
   system(terminalclear);
 }
 
 //animation loop
-void animation_loop(void){
+void Snake::animation_loop(void){
 
   clear_board();
   install_snake(1);
@@ -152,14 +214,15 @@ void animation_loop(void){
 }
 
 //delay
-void sleepcp(int ms){
+void Snake::sleepcp(int ms){
   clock_t timer_end;
   timer_end = clock() + ms * CLOCKS_PER_SEC/1000;
   while (clock() < timer_end){}
 }
 
 //response to keyboard press
-void keyboard_responder(const char k){
+void Snake::keyboard_responder(const char k){
+
   if(k=='d'||k=='6'){ //move right
     xmovement = snakeSpeedX;
     ymovement = 0;
@@ -183,19 +246,19 @@ void keyboard_responder(const char k){
 }
 
 //initialize food for snake
-void food_creation(void){
+void Snake::food_creation(void){
   srand(time(NULL));
   int fx=0, fy=0;
   if(food[0]==0){
-    fx = rand() % width + 1;
-    fy = rand() % height + 1;
+    fx = (rand() % width) + 1;
+    fy = (rand() % height) + 1;
     food[0]=fx;
     food[1]=fy;
     board[fy][fx]=2;
   }
 }
 
-void eat_food(void){
+void Snake::eat_food(void){
   int ex=0, ey=0;
   ex=food[0];
   ey=food[1];
@@ -209,20 +272,21 @@ void eat_food(void){
 }
 
 //dont let the snake touch the walls!
-void check_walltouch(void){
-  px=snake[0][0];
-  py=snake[0][1];
-  if((px==0)||(px==(width-1))||(py==0)||(py==(height-1))){
+void Snake::check_walltouch(void){
+  int qx, qy;
+  qx=snake[0][0];
+  qy=snake[0][1];
+  if((qx==0)||(qx==(width-1))||(qy==0)||(qy==(height-1))){
     cout<<"Game Over"<<endl;
     exit(0);
   }
 }
 
 //game loop
-void primary_loop(){
+void Snake::primary_loop(){
   int frame = 0;
   int lx=0;
-  int ly =0;
+  char k;
 
   while(lx<500){
     sleepcp(split);
@@ -237,17 +301,15 @@ void primary_loop(){
     check_walltouch();
     food_creation();
     eat_food();
-    cout<< food[0]<<food[1]<<endl;
     cout<<"< Frame: " << frame <<" | Score: "<< score<<" >"<<endl;
     frame++;
   }
 }
 
-int main(){
+void Snake::run(){
 
   create_board();
   create_snake();
   primary_loop();
 
-  return(0);
 }
