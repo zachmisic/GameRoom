@@ -252,6 +252,12 @@ void Snake::food_creation(void){
   if(food[0]==0){
     fx = (rand() % width) + 1;
     fy = (rand() % height) + 1;
+    if(fx==width || fx==width-1){
+      fx=width-2;
+    }
+    if(fy==height || fy==height-1){
+      fy=height-2;
+    }
     food[0]=fx;
     food[1]=fy;
     board[fy][fx]=2;
