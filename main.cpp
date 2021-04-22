@@ -28,7 +28,7 @@ int main()
 		{
 			int height, width;
 			do{
-				std::cout<<"Enter the size of your game board (height and width must both be greater than 9 and less than 31):\nWidth:";
+				std::cout<<"Enter the size of your game board \n(height and width must BOTH be greater than 9 and less than 31):\nWidth:";
 				std::cin>>width;
 				std::cout<<"Height:";
 				std::cin>>height;
