@@ -2,7 +2,7 @@
  *
  *@file: deck.h
  *@author: Jake Beesley
- *@assignment: EECS-448 project 3
+ *@assignment: EECS-448 project 4
  *@description: Header file for the deck class, which works with the card class which works with the blackjack program
  *
  --------------------------------------------------------------*/
@@ -49,17 +49,31 @@ public:
 
   /**
   * @pre N/A
-  * @post Increments the top of the deck so that the next card in line is dealt
-  * @return N/A
+  * @post Returns the value of the current card
+  * @return Value of the card
   **/
-  void deal();
+  int getValue();
 
   /**
   * @pre N/A
-  * @post Returns the value of the current card
-  * @return N/A
+  * @post Creates an empty card
+  * @return The empty card
   **/
-  int getValue();
+  card dealEmptyCard();
+
+  /**
+  * @pre N/A
+  * @post Changes an suited ace's value from 11 to 1
+  * @return An ace with a value of 1
+  **/
+  card dealSpecialAce(std::string aceSuit);
+
+  /**
+  * @pre N/A
+  * @post Increments the top of the deck by 1
+  * @return The next card at the top of the deck
+  **/
+  card nextCard();
 
 private:
   int m_totalCards = 52;
@@ -67,6 +81,10 @@ private:
   card m_deck[52];
 
   int m_topOfDeck;
+
+  card emptyCard;
+  
+  card specialAce;
 
 };
 #endif
