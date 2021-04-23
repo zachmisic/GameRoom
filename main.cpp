@@ -3,7 +3,7 @@
 //#include "Checkers.h"
 #include "snake.h"
 //#include "Memory.h"
-//#include "blackjack.h"
+#include "blackjack.h"
 
 int main()
 {
@@ -38,8 +38,8 @@ int main()
 		}
 		else if(option == 4)
 		{
-			//blackjack myBlackJack;
-			//myBlackJack.run();
+			blackjack myBlackJack;
+			myBlackJack.run();
 		}
 		else if(option == 5)
 		{
