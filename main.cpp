@@ -1,5 +1,5 @@
 #include<iostream>
-//#include "Hangman.h"
+#include "Hangman.h"
 //#include "Checkers.h"
 #include "snake.h"
 //#include "Memory.h"
@@ -16,8 +16,8 @@ int main()
 		std::cin>>option;
 		if(option == 1)
 		{
-		//	Hangman HMprogram;
-		//	HMprogram.run();
+			Hangman HMprogram;
+			HMprogram.run();
 		}
 		else if(option == 2)
 		{
