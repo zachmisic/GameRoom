@@ -1,5 +1,6 @@
 #include<iostream>
 #include "Hangman.h"
+#include "HangmanTest.h"
 //#include "Checkers.h"
 #include "snake.h"
 //#include "Memory.h"
@@ -11,7 +12,7 @@ int main()
 
 	do
 	{
-		std::cout<<"\nMain Menu\n\n1. Hangman\n2. Memory\n3. Snake\n4. Blackjack\n5. Checkers\n6. Quit\n\n";
+		std::cout<<"\nMain Menu\n\n1. Hangman\n2. Memory\n3. Snake\n4. Blackjack\n5. Checkers\n6. Test\n7. Quit\n\n";
 		std::cout<<"Select an option: ";
 		std::cin>>option;
 		if(option == 1)
@@ -48,13 +49,18 @@ int main()
 		}
 		else if(option == 6)
 		{
+			HangmanTest HMtest;
+			HMtest.run();
+		}
+		else if(option == 7)
+		{
 			std::cout<<"exiting...\n";
 		}
 		else
 		{
 			std::cout<<"Invaid option\n";
 		}
-	}while(option != 6);
+	}while(option != 7);
 
 return(0);
 }
