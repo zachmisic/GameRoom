@@ -17,9 +17,8 @@ class Memory {
 private:
 
 	int size = 4;
-	char board[size][size];
-	char boardHid[size][size];
-	char cards[] = { 'A','B','C','D','A','B','C','D','E','F','G','H','E','F','G','H' };
+	char** board;
+	char** boardHid;
 
 
 public:
