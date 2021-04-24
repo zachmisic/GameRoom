@@ -1,4 +1,4 @@
-﻿Hour Count: 7.5
+﻿Hour Count: 8
 
 
 4/7 (Wednesday)
@@ -20,6 +20,7 @@ Hours: 0.5
 -documentation
 
 4/24 (Saturday)
-Hours: 1.5
+Hours: 2
 -writing code
 -updating main.cpp and makefile
+-documentation
