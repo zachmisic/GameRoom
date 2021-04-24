@@ -3,6 +3,7 @@
 #include "HangmanTest.h"
 //#include "Checkers.h"
 #include "snake.h"
+#include "snakeTest.h"
 //#include "Memory.h"
 #include "blackjack.h"
 
@@ -51,6 +52,8 @@ int main()
 		{
 			HangmanTest HMtest;
 			HMtest.run();
+			SnakeTest sTest;
+			sTest.runTests();
 		}
 		else if(option == 7)
 		{
