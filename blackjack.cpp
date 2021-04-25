@@ -13,6 +13,7 @@
 
 //Runs the blackjack game
 void blackjack::run(){
+  establishPlayerMoney();
   blackjackGame();
 }
 
@@ -24,9 +25,9 @@ void blackjack::blackjackGame(){
 
   superShuffle();
   initializeHands();
+  establishPlayerWager();
 
-  std::cout << "\n\nWelcome to Blackjack!\n\n";
-  std::cout << "House hits on a 16\n\n";
+  std::cout << "\n\n~~~~~ House hits on a 16 ~~~~~\n\n";
 
   dealerHand[0] = myDeck.nextCard();
   playerHand[0] = myDeck.nextCard();
@@ -50,13 +51,16 @@ void blackjack::blackjackGame(){
     playerValue = playerHand[0].getValue() + playerHand[1].getValue();
   }
 
-  std::cout << "Your current value is : " << playerValue  << "\n\n";
+  std::cout << "Your hand's current value is : " << playerValue  << "\n\n";
 
   do{
     std::cout << "Do you want to hit or stay? (h/s): ";
     std::cin >> userInput;
     if(userInput == 'h'){
       dealPlayer();
+      if(playerWillBust() == true){
+        playerAceChecker();
+      }
     }
     else if(userInput == 's'){
       system("clear");
@@ -70,23 +74,27 @@ void blackjack::blackjackGame(){
   if(playerValue > 21){
     playerAceChecker();
     std::cout << "You busted! \n\n";
+    removeWager();
   }
   else{
     std::cout << "The house's first card was a : ";
     std::cout << dealerHand[0].print() << "\n";
     std::cout << "The house's second card was a : ";
     std::cout << dealerHand[1].print() << "\n";
+    if(dealerWillBust() == true){
+      dealerAceChecker();
+    }
     houseValue = dealerHand[0].getValue() + dealerHand[1].getValue();
     std::cout << "House's current value : " << generateHouseValue() << "\n\n";
     if(houseValue < 17){
       do{
-        if(houseValue < 17){
+        if(houseValue < 17 || houseValue < playerValue){
           dealHouse(); //deals to the house untill it busts or hits 17+ < 21
         }
         else{
           break;
         }
-      }while(houseValue < 17);
+      }while(houseValue < 17 || houseValue < playerValue);
     }
     if(houseValue > 21){
       dealerAceChecker();
@@ -97,17 +105,33 @@ void blackjack::blackjackGame(){
     }
   }
 
-  std::cout << "Would you like to play again? (y/n): ";
-  std::cin >> gameContinuation;
-  if(gameContinuation == 'y'){
-    system("clear");
-    blackjackGame();
-  }
-  else if(gameContinuation == 'n'){
-    std::cout << "Thanks for playing! \n";
+  if(playerMoney != 0){
+    std::cout << "Would you like to play again? (y/n): ";
+    std::cin >> gameContinuation;
+    if(gameContinuation == 'y'){
+      system("clear");
+      blackjackGame();
+    }
+    else if(gameContinuation == 'n' || playerMoney == 0){
+      std::cout << "\n\nThanks for playing! \n";
+      std::cout << "You ended with a total of : " << playerMoney << "\n\n";
+    }
+    else{
+      std::cout << "\n\nThanks for playing! \n";
+      std::cout << "You ended with a total of : " << playerMoney << "\n\n";
+    }
   }
   else{
-    std::cout << "Thanks for playing! \n";
+    std::cout << "Would you like to play a new game? (y/n): ";
+    std::cin >> gameContinuation;
+    if(gameContinuation == 'y'){
+      system("clear");
+      run();
+    }
+    else{
+      std::cout << "\n\nThanks for playing! \n";
+      std::cout << "You ended with a total of : " << playerMoney << "\n\n";
+    }
   }
 }
 
@@ -146,16 +170,19 @@ void blackjack::dealPlayer(){
   std::cout << "\nYou have been dealt a: \t";
 
   for(int j = 1; j < maximumCards; j++){
-    if(playerHand[j+1] != myDeck.dealEmptyCard()){
-      std::cout << playerHand[j+1].print() << "\n";
+    if(playerHand[j+1] == myDeck.dealEmptyCard()){
+      std::cout << playerHand[j].print() << "\n";
       break;
     }
   }
 
-  for(int k = 2; k < maximumCards; k++){
+  playerValue = 0;
+  for(int k = 0; k < maximumCards; k++){
     playerValue = playerValue + playerHand[k].getValue();
   }
-  playerAceChecker();
+  if(playerValue > 21){
+    playerAceChecker();
+  }
   std::cout << "Value of your hand : " << playerValue << "\n\n";
 }
 
@@ -190,14 +217,16 @@ int blackjack::generateHouseValue(){
 
 //Check if there is an ace in the player's hand
 void blackjack::playerAceChecker(){
-  if(houseValue < 10){
-    for(int i = 0; i < maximumCards; i++){
-      if(playerHand[i].getValue() == 11){
-        std::string sameSuit = playerHand[i].getSuit();
-        playerHand[i] = myDeck.dealSpecialAce(sameSuit);
-        break;
-      }
+  for(int i = 0; i < maximumCards; i++){
+    if(playerHand[i].getValue() == 11){
+      std::string sameSuit = playerHand[i].getSuit();
+      playerHand[i] = myDeck.dealSpecialAce(sameSuit);
+      break;
     }
+  }
+  playerValue = 0;
+  for(int k = 0; k < maximumCards; k++){
+    playerValue = playerValue + playerHand[k].getValue();
   }
 }
 
@@ -218,11 +247,82 @@ void blackjack::endGame(){
   std::cout << "Your current value : " << playerValue << "\n\n";
   if(playerValue > houseValue || houseValue > 21){
     std::cout << "You won! \n\n";
+    rewardWager();
   }
   else if(houseValue > playerValue){
     std::cout << "You lost! \n\n";
+    removeWager();
   }
   else{
     std::cout << "You both tied! \n\n";
   }  
+}
+
+//Set the value of the player's money
+void blackjack::establishPlayerMoney(){
+  system("clear");
+
+  std::cout << "\n\nWelcome to Blackjack!\n\n";
+
+  std::cout << "How much money would you like to start with?\n";
+  std::cout << "Enter amount : ";
+  std::cin >> playerMoney;
+  while(std::cin.fail() || playerMoney <= 0){
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cout << "Please enter a valid starting amount : ";
+    std::cin >> playerMoney;
+  }
+  std::cout << "\n";
+}
+
+//Set the value of the player's wager
+void blackjack::establishPlayerWager(){
+  std::cout << "Your current total is : " << playerMoney << "\n";
+  std::cout << "How much would you like to wager for the upcoming hand?\n";
+  std::cout << "Enter amount : ";
+  std::cin >> playerWager;
+  while(std::cin.fail() || playerWager <= 0 || playerWager > playerMoney){
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cout << "Please enter a valid wager : ";
+    std::cin >> playerWager;
+  }
+  system("clear");
+}
+
+//Reward the player's wager to their money
+void blackjack::rewardWager(){
+  playerMoney = playerMoney + playerWager;
+  std::cout << "You won : " << playerWager << "\n";
+  std::cout << "You're current total is : " << playerMoney << "\n\n";
+}
+
+//Remove the player's wager from their money
+void blackjack::removeWager(){
+  playerMoney = playerMoney - playerWager;
+  std::cout << "You lost : " << playerWager << "\n";
+  std::cout << "You're current total is : " << playerMoney << "\n\n";
+}
+
+//Checks if the player is going to bust on the next card
+bool blackjack::playerWillBust(){
+  int futureValue = myDeck.peekNextCard().getValue();
+  if(futureValue + playerValue > 21){
+    return(true);
+  }
+  else{
+    return(false);
+  }
+}
+
+//Checks if the dealer is going to bust on the next card
+bool blackjack::dealerWillBust(){
+  int futureValue = myDeck.peekNextCard().getValue();
+  if(futureValue + houseValue > 21){
+    return(true);
+  }
+  else{
+    return(false);
+  }
 }
