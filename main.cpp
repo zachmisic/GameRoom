@@ -6,6 +6,7 @@
 #include "snakeTest.h"
 //#include "Memory.h"
 #include "blackjack.h"
+#include "blackjackTest.h"
 
 int main()
 {
@@ -54,6 +55,8 @@ int main()
 			HMtest.run();
 			SnakeTest sTest;
 			sTest.runTests();
+			blackjackTest myBlackJackTester;
+			myBlackJackTester.run();
 		}
 		else if(option == 7)
 		{
