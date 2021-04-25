@@ -1,0 +1,18 @@
+Estimated Person-Hours: 45
+Group Members: 5
+Average hours per group member: 9
+
+-Hour Estimate Breakdown-
+Individual Game Class Updates and Test Suite: 6
+Individual Game Documentation and Documentation for program: 2
+Meetings: 1
+
+Multiply by number of group members...
+
+Total Hours: 45
+
+Justification:
+-Each group member is editing their own game and creating its own suite for testing
+-The 6 hour estimate includes average estimated time to edit all classes and design tests for all
+-2 hours each for documentation of new tests and updated methods
+-Each taking 1 hour for group meeting, for video recording
