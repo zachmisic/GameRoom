@@ -2,7 +2,7 @@
  *
  *@file: Memory.cpp
  *@author: Zach Misic
- *@assignment: EECS-448 project 3
+ *@assignment: EECS-448 project 4
  *@description: Contains method definitions for the "Memory" class
  *
  --------------------------------------------------------------*/
@@ -33,7 +33,6 @@ Memory::~Memory() {
 
 void Memory::run() {
 	populate();
-	int pairsFound = 0;
 	int xchoice1=-1, ychoice1=-1;
 	int xchoice2 = -1, ychoice2 = -1;
 	bool sameFlag;
@@ -65,7 +64,7 @@ void Memory::run() {
 		} while (dashFlag == true);
 
 		std::system("clear");
-		boardHid[ychoice1][xchoice1] = board[ychoice1][xchoice1];
+		flip(xchoice1, ychoice1);
 		display();
 
 
@@ -104,7 +103,7 @@ void Memory::run() {
 		} while (sameFlag);
 
 		std::system("clear");
-		boardHid[ychoice2][xchoice2] = board[ychoice2][xchoice2];
+		flip(xchoice2, ychoice2);
 		display();
 
 
@@ -133,7 +132,6 @@ void Memory::run() {
 }
 
 void Memory::populate() {
-	std::cout << "started populate";
 	char cards[] = { 'A','B','C','D','A','B','C','D','E','F','G','H','E','F','G','H' };
 	int randSelect = -1;
 	for (int x = 0; x < size; x++) {
@@ -152,7 +150,6 @@ void Memory::populate() {
 			boardHid[x][y] = '#';
 		}
 	}
-	std::cout << "populated";
 }
 
 void Memory::display() {
@@ -171,4 +168,12 @@ void Memory::display() {
 	}
 	std::cout << '\n';
 
+}
+
+void Memory::flip(int c, int r) {
+	boardHid[r][c] = board[r][c];
+}
+
+int Memory::pairsLeft() {
+	return(pairsTotal - pairsFound);
 }

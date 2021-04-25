@@ -15,6 +15,9 @@
 
 class MemoryTest {
 
+private:
+	Memory test;
+
 public:
 
 	/**

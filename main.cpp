@@ -4,7 +4,8 @@
 //#include "Checkers.h"
 #include "snake.h"
 #include "snakeTest.h"
-//#include "Memory.h"
+#include "Memory.h"
+#include "MemoryTest.h"
 #include "blackjack.h"
 #include "blackjackTest.h"
 
@@ -24,8 +25,8 @@ int main()
 		}
 		else if(option == 2)
 		{
-			//Memory Mprogram;
-		//	Mprogram.run();
+			Memory Mprogram;
+			Mprogram.run();
 		}
 		else if(option == 3)
 		{
@@ -57,6 +58,8 @@ int main()
 			sTest.runTests();
 			blackjackTest myBlackJackTester;
 			myBlackJackTester.run();
+			MemoryTest memTest;
+			memTest.run();
 		}
 		else if(option == 7)
 		{

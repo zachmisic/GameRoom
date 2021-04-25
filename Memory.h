@@ -2,7 +2,7 @@
  *
  *@file: Memory.h
  *@author: Zach Misic
- *@assignment: EECS-448 project 3
+ *@assignment: EECS-448 project 4
  *@description: Contains headers for the "Memory" class
  *
  --------------------------------------------------------------*/
@@ -16,6 +16,8 @@ class Memory {
 
 private:
 
+	int pairsTotal = 8;
+	int pairsFound = 0;
 	int size = 4;
 	char** board;
 	char** boardHid;
@@ -52,6 +54,19 @@ public:
 	**/
 	void display();
 
+	/**
+	* @pre An instance of "Memory" has been created and the board has been populated
+	* @post Flips a card on the game board
+	* @return N/A
+	**/
+	void flip(int c, int r);
+
+	/**
+	* @pre An instance of "Memory" has been created and the board has been populated
+	* @post N/A
+	* @return number of pairs that have not been found
+	**/
+	int pairsLeft();
 
 };
 #endif

@@ -13,12 +13,11 @@
 #include <cstdlib>
 
 void MemoryTest::run() {
-	Memory test;
 	testPopulate();
 	testDisplay();
+	testPairs();
 	testFlipFirst();
 	testFlipSecond();
-	testPairs();
 }
 
 //Test 1
@@ -35,19 +34,28 @@ void MemoryTest::testDisplay() {
 }
 
 //Test 3
-void MemoryTest::testFlipFirst() {
+void MemoryTest::testPairs() {
 
-	std::cout << "Test 3: Flip first card\n";
+	std::cout << "Test 5: Test the number of pairs that must be matched";
+	if (test.pairsLeft() == 8) {
+		std::cout << "PASSED\n";
+	}
+	else {
+		std::cout << "FAILED\n";
+	}
 }
 
 //Test 4
-void MemoryTest::testFlipSecond() {
+void MemoryTest::testFlipFirst() {
 
-	std::cout << "Test 4: Flip second card\n";
+	test.flip(1, 1);
+	std::cout << "Test 3: Flip first card PASSED\n";
 }
 
 //Test 5
-void MemoryTest::testPairs() {
+void MemoryTest::testFlipSecond() {
 
-	std::cout << "Test 5: Test the number of pairs that must be matched\n";
+	test.flip(0, 0);
+	std::cout << "Test 4: Flip second card PASSED\n";
 }
+
