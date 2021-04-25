@@ -1,0 +1,27 @@
+FULL HOUR COUNT: 9
+
+4/23/21 (Friday)
+Total Hours: 6
+Description:
+Implemented core methods to the card, deck, and blackjack class
+Refactored the entire existing codebase of blackjack
+- Implemented methods to help make blackjack.cpp less cluttered
+- Added operators to the card class in order to make various comparisons between cards
+- Created an empty card, in order to populate each hand with empty cards. Usefull in determining what position of the hand the new card will be overriding.
+- Fixed the shuffle implementation within the deck and blackjack classes
+- Fixed the dealing method on how the player recieves a new card. Combined two methods to easily increment and return the card at the top of the deck.
+
+4/24/21 (Saturday)
+Total Hours: 3
+Description:
+Implemented the tester class for blackjack
+- Verifies various deck and blackjack methods work appropriately
+- Runs a series of 5 tests for core functions
+Implemented a money function within the blackjack class
+- Player can establish a total money they can play with
+- Player can win or lose their wager based on if they win or lose in the game
+- Game continues untill the use quits or runs out of money (in which case they can play again)
+Bug fixes
+- Fixed ace bugs related to overriding a player's total
+- Impleted a peekNextCard() method that helps in determining if the player is going to bust
+- Made it easier to determine when the two aceChecker() functions need to be called. They don't need to be called if the player isn't going to bust on the next hand.
