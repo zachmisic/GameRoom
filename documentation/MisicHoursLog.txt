@@ -1,3 +1,38 @@
+PROJECT 4:
+FULL HOUR COUNT: 6
+
+4/19/21 (Monday)
+8:00pm - 10:00pm
+Total Hours: 2
+Description:
+Memory game debugging
+
+4/23/21 (Friday)
+7:00pm - 8:00pm
+Total Hours: 1
+Description:
+Memory game debugging
+
+4/24/21 (Saturday)
+12:00pm - 2:00pm
+4:00pm - 5:00 pm
+Total Hours: 3
+Description:
+-Memory game debugging
+-Test case ideation and implementation
+
+4/25/21 (Sunday)
+11:00am - 2:00pm
+4:00pm - 5:00pm
+Total Hours: 4
+Description:
+-Test case implementation
+-Code base testing
+-Video recording
+-Documentation
+
+
+PROJECT 3:
 FULL HOUR COUNT: 6
 
 3/17/21 (Wednesday)
