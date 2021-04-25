@@ -1,7 +1,7 @@
 #include<iostream>
 #include "Hangman.h"
 #include "HangmanTest.h"
-//#include "Checkers.h"
+#include "Checkers.h"
 #include "snake.h"
 #include "snakeTest.h"
 //#include "Memory.h"
@@ -46,8 +46,8 @@ int main()
 		}
 		else if(option == 5)
 		{
-			//Checkers Cprogram;
-			//Cprogram.run();
+			Checkers Cprogram;
+			Cprogram.run();
 		}
 		else if(option == 6)
 		{

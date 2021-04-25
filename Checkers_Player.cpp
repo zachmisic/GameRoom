@@ -49,8 +49,8 @@ void Checkers_Player::movePiece()
         //check user input
         if (validPosition(row, col))
         {
-            if(((*m_Board[row][col] == 'w' || *m_Board[row][col] == 'W') && !isBlack)
-            ||((*m_Board[row][col] == 'b' || *m_Board[row][col] == 'B') && isBlack))
+            if((((*m_Board)[row][col] == 'w' || (*m_Board)[row][col] == 'W') && !isBlack)
+            ||(((*m_Board)[row][col] == 'b' || (*m_Board)[row][col] == 'B') && isBlack))
             {
                 if(canMove(row, col))
                 {
@@ -95,12 +95,12 @@ void Checkers_Player::movePiece()
         {
             //now we know the input is good
             //move the piece
-            if(*m_Board[row2][col2] == '-' && !jumpChain)
+            if((*m_Board)[row2][col2] == '-' && !jumpChain)
             {//if not jump
                 replace(row, col, row2, col2);
                 jumpChain = false;
             }
-            else if(*m_Board[row2][col2] == '-' && jumpChain)
+            else if((*m_Board)[row2][col2] == '-' && jumpChain)
             {
                 std::cout << "You may not move normally after jumping. Try again\n";
             }
@@ -112,7 +112,7 @@ void Checkers_Player::movePiece()
                     jumpChain = true;
                 }
             }
-        }
+        }   
 
         if(jumpChain)
         {
@@ -153,8 +153,8 @@ bool Checkers_Player::replace(int Row1, int Col1, int Row2, int Col2)
 {
     if (validPosition(Row1, Col1) && validPosition(Row2, Col2))
     {
-        *m_Board[Row2][Col2] = *m_Board[Row1][Col1];
-        *m_Board[Row1][Col1] = '-';
+        (*m_Board)[Row2][Col2] = (*m_Board)[Row1][Col1];
+        (*m_Board)[Row1][Col1] = '-';
 
         return true;
     }
@@ -169,7 +169,7 @@ bool Checkers_Player::validMove(int Row1, int Col1, int Row2, int Col2)
         //if the player is white
         if (isWhite())
         {
-            if ( *m_Board[Row1][Col1] == 'w' && *m_Board[Row2][Col2] != 'w' && *m_Board[Row2][Col2] != 'W')
+            if ((*m_Board)[Row1][Col1] == 'w' && (*m_Board)[Row2][Col2] != 'w' && (*m_Board)[Row2][Col2] != 'W')
             {
                 //check new place
                 if (Col2 >= Col1-1 && Col2 <= Col1+1 && Row2 == Row1-1)
@@ -181,7 +181,7 @@ bool Checkers_Player::validMove(int Row1, int Col1, int Row2, int Col2)
                     std::cout << "That square is invalid for a lesser piece. try again.\n";
                 }
             }
-            else if(*m_Board[Row2][Col2] != 'w' && *m_Board[Row2][Col2] != 'W')
+            else if((*m_Board)[Row2][Col2] != 'w' && (*m_Board)[Row2][Col2] != 'W')
             {
                 //check new place
                 if (Col2 >= Col1-1 && Col2 <= Col1+1 && Row2 >= Row1-1 && Row2 <= Row1+1)
@@ -200,7 +200,7 @@ bool Checkers_Player::validMove(int Row1, int Col1, int Row2, int Col2)
         }
         else
         {
-            if (*m_Board[Row1][Col1] == 'b' && *m_Board[Row2][Col2] != 'b' && *m_Board[Row2][Col2] != 'B')
+            if ((*m_Board)[Row1][Col1] == 'b' && (*m_Board)[Row2][Col2] != 'b' && (*m_Board)[Row2][Col2] != 'B')
             {
                 //check new place
                 if (Col2 >= Col1-1 && Col2 <= Col1+1 && Row2 == Row1+1)
@@ -212,7 +212,7 @@ bool Checkers_Player::validMove(int Row1, int Col1, int Row2, int Col2)
                     std::cout << "That square is invalid for a lesser piece. try again.\n";
                 }
             }
-            else if(*m_Board[Row2][Col2] != 'b' && *m_Board[Row2][Col2] != 'B')
+            else if((*m_Board)[Row2][Col2] != 'b' && (*m_Board)[Row2][Col2] != 'B')
             {
                 //check new place
                 if (Col2 >= Col1-1 && Col2 <= Col1+1 && Row2 >= Row1-1 && Row2 <= Row1+1)
@@ -245,7 +245,7 @@ bool Checkers_Player::validJump(int Row1, int Col1, int Row2, int Col2)
     {
         if(validPosition(Row2+1, Col2+1))
         {
-            if (*m_Board[Row2+1][Col2+1] == '-')
+            if ((*m_Board)[Row2+1][Col2+1] == '-')
             {
                 return true;
             }
@@ -255,7 +255,7 @@ bool Checkers_Player::validJump(int Row1, int Col1, int Row2, int Col2)
     {
         if(validPosition(Row2-1, Col2+1))
         {
-            if (*m_Board[Row2-1][Col2+1] == '-')
+            if ((*m_Board)[Row2-1][Col2+1] == '-')
             {
                 return true;
             }
@@ -265,7 +265,7 @@ bool Checkers_Player::validJump(int Row1, int Col1, int Row2, int Col2)
     {
         if(validPosition(Row2+1, Col2-1))
         {
-            if (*m_Board[Row2+1][Col2-1] == '-')
+            if ((*m_Board)[Row2+1][Col2-1] == '-')
             {
                 return true;
             }
@@ -275,7 +275,7 @@ bool Checkers_Player::validJump(int Row1, int Col1, int Row2, int Col2)
     {
         if(validPosition(Row2-1, Col2-1))
         {
-            if (*m_Board[Row2-1][Col2-1] == '-')
+            if ((*m_Board)[Row2-1][Col2-1] == '-')
             {
                 return true;
             }
@@ -375,103 +375,103 @@ bool Checkers_Player::canMove(int Row1, int Col1)
     {
         return false;
     }
-    if(*m_Board[Row1][Col1] == 'w')
+    if((*m_Board)[Row1][Col1] == 'w')
     {
         //check if up and left is a valid position
         if(validPosition(Row1-1, Col1-1))
         {
             //check if up and left is a valid move position
-            if((validMove(Row1, Col1, Row1-1, Col1-1) && *m_Board[Row1-1][Col1-1] == '-') || validJump(Row1, Col1, Row1-1, Col1-1))
+            if(validMove(Row1, Col1, Row1-1, Col1-1) && ((*m_Board)[Row1-1][Col1-1] == '-' || validJump(Row1, Col1, Row1-1, Col1-1)))
             {
                 return true;
             }
         }
         else if(validPosition(Row1-1, Col1+1))
         {
-            if((validMove(Row1, Col1, Row1-1, Col1+1) && *m_Board[Row1-1][Col1+1] == '-') || validJump(Row1, Col1, Row1-1, Col1+1))
+            if(validMove(Row1, Col1, Row1-1, Col1+1) && ((*m_Board)[Row1-1][Col1+1] == '-' || validJump(Row1, Col1, Row1-1, Col1+1)))
             {
                 return true;
             }
         }
     }
-    else if(*m_Board[Row1][Col1] == 'W')
+    else if((*m_Board)[Row1][Col1] == 'W')
     {
         //check if up and left is a valid position
         if(validPosition(Row1-1, Col1-1))
         {
             //check if up and left is a valid move position
-            if((validMove(Row1, Col1, Row1-1, Col1-1) && *m_Board[Row1-1][Col1-1] == '-') || validJump(Row1, Col1, Row1-1, Col1-1))
+            if(validMove(Row1, Col1, Row1-1, Col1-1) && ((*m_Board)[Row1-1][Col1-1] == '-' || validJump(Row1, Col1, Row1-1, Col1-1)))
             {
                 return true;
             }
         }
         else if(validPosition(Row1-1, Col1+1))
         {
-            if((validMove(Row1, Col1, Row1-1, Col1+1) && *m_Board[Row1-1][Col1+1] == '-') || validJump(Row1, Col1, Row1-1, Col1+1))
+            if(validMove(Row1, Col1, Row1-1, Col1+1) && ((*m_Board)[Row1-1][Col1+1] == '-' || validJump(Row1, Col1, Row1-1, Col1+1)))
             {
                 return true;
             }
         }
         else if(validPosition(Row1+1, Col1-1))
         {
-            if((validMove(Row1, Col1, Row1+1, Col1-1) && *m_Board[Row1+1][Col1-1] == '-') || validJump(Row1, Col1, Row1+1, Col1-1))
+            if(validMove(Row1, Col1, Row1+1, Col1-1) && ((*m_Board)[Row1+1][Col1-1] == '-' || validJump(Row1, Col1, Row1+1, Col1-1)))
             {
                 return true;
             }
         }
         else if(validPosition(Row1+1, Col1+1))
         {
-            if((validMove(Row1, Col1, Row1+1, Col1+1) && *m_Board[Row1+1][Col1+1] == '-') || validJump(Row1, Col1, Row1+1, Col1+1))
+            if(validMove(Row1, Col1, Row1+1, Col1+1) && ((*m_Board)[Row1+1][Col1+1] == '-' || validJump(Row1, Col1, Row1+1, Col1+1)))
             {
                 return true;
             }
         }
     }
-    else if(*m_Board[Row1][Col1] == 'b')
+    else if((*m_Board)[Row1][Col1] == 'b')
     {
         if(validPosition(Row1+1, Col1-1))
         {
-            if((validMove(Row1, Col1, Row1+1, Col1-1) && *m_Board[Row1+1][Col1-1] == '-') || validJump(Row1, Col1, Row1+1, Col1-1))
+            if(validMove(Row1, Col1, Row1+1, Col1-1) && ((*m_Board)[Row1+1][Col1-1] == '-' || validJump(Row1, Col1, Row1+1, Col1-1)))
             {
                 return true;
             }
         }
         else if(validPosition(Row1+1, Col1+1))
         {
-            if((validMove(Row1, Col1, Row1+1, Col1+1) && *m_Board[Row1+1][Col1+1] == '-') || validJump(Row1, Col1, Row1+1, Col1+1))
+            if(validMove(Row1, Col1, Row1+1, Col1+1) && ((*m_Board)[Row1+1][Col1+1] == '-' || validJump(Row1, Col1, Row1+1, Col1+1)))
             {
                 return true;
             }
         }
     }
-    else if(*m_Board[Row1][Col1] == 'B')
+    else if((*m_Board)[Row1][Col1] == 'B')
     {
         //check if up and left is a valid position
         if(validPosition(Row1-1, Col1-1))
         {
             //check if up and left is a valid move position
-            if((validMove(Row1, Col1, Row1-1, Col1-1) && *m_Board[Row1-1][Col1-1] == '-') || validJump(Row1, Col1, Row1-1, Col1-1))
+            if(validMove(Row1, Col1, Row1-1, Col1-1) && ((*m_Board)[Row1-1][Col1-1] == '-' || validJump(Row1, Col1, Row1-1, Col1-1)))
             {
                 return true;
             }
         }
         else if(validPosition(Row1-1, Col1+1))
         {
-            if((validMove(Row1, Col1, Row1-1, Col1+1) && *m_Board[Row1-1][Col1+1] == '-') || validJump(Row1, Col1, Row1-1, Col1+1))
+            if(validMove(Row1, Col1, Row1-1, Col1+1) && ((*m_Board)[Row1-1][Col1+1] == '-' || validJump(Row1, Col1, Row1-1, Col1+1)))
             {
                 return true;
             }
         }
         else if(validPosition(Row1+1, Col1-1))
         {
-            if((validMove(Row1, Col1, Row1+1, Col1-1) && *m_Board[Row1+1][Col1-1] == '-') || validJump(Row1, Col1, Row1+1, Col1-1))
+            if(validMove(Row1, Col1, Row1+1, Col1-1) && ((*m_Board)[Row1+1][Col1-1] == '-' || validJump(Row1, Col1, Row1+1, Col1-1)))
             {
                 return true;
             }
         }
         else if(validPosition(Row1+1, Col1+1))
         {
-            if((validMove(Row1, Col1, Row1+1, Col1+1) && *m_Board[Row1+1][Col1+1] == '-') || validJump(Row1, Col1, Row1+1, Col1+1))
+            if(validMove(Row1, Col1, Row1+1, Col1+1) && ((*m_Board)[Row1+1][Col1+1] == '-' || validJump(Row1, Col1, Row1+1, Col1+1)))
             {
                 return true;
             }
