@@ -36,12 +36,12 @@ void MemoryTest::testDisplay() {
 //Test 3
 void MemoryTest::testPairs() {
 
-	std::cout << "Test 5: Test the number of pairs that must be matched";
+	std::cout << "Test 3: Test the number of pairs that must be matched";
 	if (test.pairsLeft() == 8) {
-		std::cout << "PASSED\n";
+		std::cout << " PASSED\n";
 	}
 	else {
-		std::cout << "FAILED\n";
+		std::cout << " FAILED\n";
 	}
 }
 
@@ -49,13 +49,12 @@ void MemoryTest::testPairs() {
 void MemoryTest::testFlipFirst() {
 
 	test.flip(1, 1);
-	std::cout << "Test 3: Flip first card PASSED\n";
+	std::cout << "Test 4: Flip first card PASSED\n";
 }
 
 //Test 5
 void MemoryTest::testFlipSecond() {
 
 	test.flip(0, 0);
-	std::cout << "Test 4: Flip second card PASSED\n";
+	std::cout << "Test 5: Flip second card PASSED\n";
 }
-
