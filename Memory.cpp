@@ -2,7 +2,7 @@
  *
  *@file: Memory.cpp
  *@author: Zach Misic
- *@assignment: EECS-448 project 3
+ *@assignment: EECS-448 project 4
  *@description: Contains method definitions for the "Memory" class
  *
  --------------------------------------------------------------*/
@@ -33,13 +33,13 @@ Memory::~Memory() {
 
 void Memory::run() {
 	populate();
-	int pairsFound = 0;
 	int xchoice1=-1, ychoice1=-1;
 	int xchoice2 = -1, ychoice2 = -1;
 	bool sameFlag;
 	bool dashFlag;
 
-	std::cout << "Memory!\n";
+	std::system("clear");
+
 	while (pairsFound < 8) {
 		display();
 
@@ -63,8 +63,8 @@ void Memory::run() {
 			}
 		} while (dashFlag == true);
 
-
-		boardHid[ychoice1][xchoice1] = board[ychoice1][xchoice1];
+		std::system("clear");
+		flip(xchoice1, ychoice1);
 		display();
 
 
@@ -102,7 +102,8 @@ void Memory::run() {
 
 		} while (sameFlag);
 
-		boardHid[ychoice2][xchoice2] = board[ychoice2][xchoice2];
+		std::system("clear");
+		flip(xchoice2, ychoice2);
 		display();
 
 
@@ -112,12 +113,12 @@ void Memory::run() {
 			boardHid[ychoice1][xchoice1] = '-';
 			boardHid[ychoice2][xchoice2] = '-';
 			pairsFound++;
-			std::cout << "You found a matching pair!\n";
+			std::cout << "You found a matching pair!\n\n";
 		}
 		else {
 			boardHid[ychoice1][xchoice1] = '#';
 			boardHid[ychoice2][xchoice2] = '#';
-			std::cout << "Sorry! That pair did not match\n";
+			std::cout << "Sorry! That pair did not match\n\n";
 		}
 
 		xchoice1 = -1;
@@ -126,12 +127,11 @@ void Memory::run() {
 		ychoice2 = -1;
 
 	}
-	std::cout << "Congratulations! You win!\n";
+	std::cout << "\nCongratulations! You win!\n\n";
 
 }
 
 void Memory::populate() {
-	std::cout << "started populate";
 	char cards[] = { 'A','B','C','D','A','B','C','D','E','F','G','H','E','F','G','H' };
 	int randSelect = -1;
 	for (int x = 0; x < size; x++) {
@@ -150,7 +150,6 @@ void Memory::populate() {
 			boardHid[x][y] = '#';
 		}
 	}
-	std::cout << "populated";
 }
 
 void Memory::display() {
@@ -169,4 +168,12 @@ void Memory::display() {
 	}
 	std::cout << '\n';
 
+}
+
+void Memory::flip(int c, int r) {
+	boardHid[r][c] = board[r][c];
+}
+
+int Memory::pairsLeft() {
+	return(pairsTotal - pairsFound);
 }

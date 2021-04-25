@@ -1,0 +1,42 @@
+FULL HOUR COUNT: 11.5
+
+4/12/21 (Monday)
+2:00pm - 3:00pm
+Total Hours: 1
+Description:
+Planning what I'm gonna do to fix and update
+
+
+4/19/21 (Monday)
+12:00pm-3:30pm
+Total Hours: 3.5
+Description:
+-Working on code
+-Fixing bugs as they pop up
+-thinking of what else could be improved
+
+4/22/21 (Thursday)
+9:30am-11:30am
+Total Hours: 2
+Description:
+-Figured out min and mix for game
+-final bug fixing
+-planned documentation
+
+4/23/21 (Friday)
+4:30pm-6:30pm 
+Total Hours: 2
+Description:
+-Documentation
+
+4/24/21 (Saturday)
+3:30pm-5:30pm 
+Total Hours: 2
+Description:
+-Test Suite
+
+4/25/21 (Sunday)
+3:30pm-4:30pm 
+Total Hours: 1
+Description:
+-Video
