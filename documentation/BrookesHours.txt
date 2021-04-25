@@ -1,4 +1,4 @@
-﻿Hour Count: 8
+﻿Hour Count: 9
 
 
 4/7 (Wednesday)
@@ -24,3 +24,8 @@ Hours: 2
 -writing code
 -updating main.cpp and makefile
 -documentation
+
+4/25 (Sunday)
+Hours: 1
+-group meeting
+-recording project demo
