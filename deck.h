@@ -75,6 +75,13 @@ public:
   **/
   card nextCard();
 
+  /**
+  * @pre N/A
+  * @post N/A
+  * @return The card at the top of the deck
+  **/
+  card peekNextCard();
+
 private:
   int m_totalCards = 52;
 

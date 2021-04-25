@@ -72,3 +72,8 @@ card deck::nextCard(){
   m_topOfDeck = m_topOfDeck + 1;
   return(nextCard);
 }
+
+//Checks the next card of the deck
+card deck::peekNextCard(){
+  return(m_deck[m_topOfDeck]);
+}
