@@ -13,6 +13,7 @@
 #include <cstdlib>
 
 void MemoryTest::run() {
+	std::cout << "\nTesting Memory... \n";
 	testPopulate();
 	testDisplay();
 	testPairs();
