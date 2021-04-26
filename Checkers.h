@@ -15,6 +15,11 @@
 class Checkers
 {
 	public:
+
+		Checkers_Player* m_Player1;
+		Checkers_Player* m_Player2;
+
+		
 		/**
 		* @pre The class must be created
 		* @post The class is created
@@ -50,17 +55,15 @@ class Checkers
 		**/
 		void ResetBoard();
 
-	private:
-		char** m_Board;
-		Checkers_Player* m_Player1;
-		Checkers_Player* m_Player2;
-
 		/**
 		* @pre The function is called
 		* @post any piece at the edge of the board is promoted
 		* @return bool, if something was promoted, return true
 		**/
 		bool promote();
+
+	private:
+		char** m_Board;
 
 		/**
 		* @pre The game is ongoing, and we need to know if it should end

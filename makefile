@@ -1,7 +1,7 @@
-run: main.o Hangman.o HangmanTest.o Checkers.o Checkers_Player.o snake.o snakeTest.o blackjack.o blackjackTest.o deck.o card.o Memory.o MemoryTest.o
+run: main.o Hangman.o HangmanTest.o CheckersTest.o Checkers.o Checkers_Player.o snake.o snakeTest.o blackjack.o blackjackTest.o deck.o card.o Memory.o MemoryTest.o
 	g++ -std=c++11 -g -Wall main.o Hangman.o HangmanTest.o Checkers.o Checkers_Player.o snake.o snakeTest.o blackjack.o blackjackTest.o deck.o card.o Memory.o MemoryTest.o -o run
 
-main.o: main.cpp Hangman.h HangmanTest.h Checkers.h snake.h snakeTest.h blackjack.h blackjackTest.h Memory.h
+main.o: main.cpp Hangman.h HangmanTest.h CheckersTest.h Checkers.h snake.h snakeTest.h blackjack.h blackjackTest.h Memory.h
 	g++ -std=c++11 -g -Wall -c main.cpp
 
 Hangman.o: Hangman.h Hangman.cpp
@@ -9,6 +9,9 @@ Hangman.o: Hangman.h Hangman.cpp
 
 HangmanTest.o: HangmanTest.h HangmanTest.cpp
 	g++ -std=c++11 -g -Wall -c HangmanTest.cpp
+
+CheckersTest.o: CheckersTest.h CheckersTest.cpp Checkers.h
+	g++ -std=c++11 -g -Wall -c CheckersTest.cpp
 
 Checkers.o: Checkers.h Checkers.cpp Checkers_Player.h
 	g++ -std=c++11 -g -Wall -c Checkers.cpp

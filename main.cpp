@@ -1,6 +1,7 @@
 #include<iostream>
 #include "Hangman.h"
 #include "HangmanTest.h"
+#include "CheckersTest.h"
 #include "Checkers.h"
 #include "snake.h"
 #include "snakeTest.h"
@@ -61,6 +62,8 @@ int main()
 			sTest.runTests();
 			blackjackTest myBlackJackTester;
 			myBlackJackTester.run();
+			CheckersTest MycheckersTest;
+			MycheckersTest.run();
 		}
 		else if(option == 7)
 		{
