@@ -52,14 +52,15 @@ int main()
 		}
 		else if(option == 6)
 		{
-			HangmanTest HMtest;
+
+		        MemoryTest memTest;
+                        memTest.run();
+		        HangmanTest HMtest;
 			HMtest.run();
 			SnakeTest sTest;
 			sTest.runTests();
 			blackjackTest myBlackJackTester;
 			myBlackJackTester.run();
-			MemoryTest memTest;
-			memTest.run();
 		}
 		else if(option == 7)
 		{
