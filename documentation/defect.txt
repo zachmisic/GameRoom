@@ -1,0 +1,67 @@
+Date Reported: 4/7
+Reporter: Brooke Jackson
+Description: In hangman’s battle mode the display of each player was getting mixed up. The 
+        wrong displays would appear on the wrong player’s turn.
+Date Fixed: 4/12
+Fixer: Brooke Jackson
+Description: Passed an “int” parameter into each function to tell it which display should be 
+        called at each player’s turn.
+
+
+Date Reported: 4/7
+Reporter: Brooke Jackson
+Description: In hangman’s battle mode each player could see each other’s word which 
+        ruined the whole point of the game.
+Date Fixed: 4/12
+Fixer: Brooke Jackson
+Description: Added system(“clear”) to clear the board after the words were inputted.
+
+Date Reported: 4/23
+Reporter: Jake Beesley
+Description: In blackjack, the ace checker methods were getting called too often. This would 
+result in the player or dealer’s hand value needlessly getting changed. An ace can either be an 11 or a 1 in terms of value, in which all aces house an 11 initially until changed.
+Date Fixed: 4/24
+Fixer: Jake Beesley
+Description: Created a method within the deck class which peeks at the top of the deck. This 
+was used within the blackjack functions that would determine if the player or   dealer were going to bust on the next card. As a result, if the dealer or player were going to bust on the next hand, only then would ace checker be called, which would prevent the player or dealer from busting.
+
+Date Reported: 4/23
+Reporter: Jake Beesley
+Description: In blackjack, the next card dealt to the player would always be displayed as the 
+same card. Example: If the player hit twice, they would receive two cards added to their hand, but would only get information for the first card, and would not be notified about what the second card was. Same case with the dealer.
+Date Fixed: 4/24
+Fixer: Jake Beesley
+Description: Fixed the player and deal method for loops which would continuously notify the 
+player of the same card, regardless of if that card was dealt that time. As a result, the player and dealer are visually dealt a new card, and their respective values get updated correctly.
+
+Date Reported: 4/23
+Reporter: Jake Beesley
+Description: in blackjack, the dealer and player values were getting updated with incorrect 
+values.
+Date Fixed: 4/24
+Fixer: Jake Beesley
+Description: Fixed all methods that would update the player and dealer values, and 
+implemented a method within each deal function that would wipe the value of the dealer and player. A loop would then scan every card in the hand, and would add all values together. As a result, no value would get added twice or accidentally, due to the reset and fix every time a card is dealt.
+
+Date Reported: 4/6
+Reporter: Zach Misic
+Description: In the makefile, the necessary commands needed for the memory game to 
+function were removed.
+Date Fixed: 4/23
+Fixer: Jake Beesley
+Description: Re-added the necessary commands into the makefile in order for the memory 
+game to function.
+
+Date Reported: 4/2
+Reporter: Chloe Thornton
+Description: In Snake, when the board was created, hash marks and plus symbols randomly appeared on the board and didn’t increase the score.
+Date Fixed: 4/19
+Fixer: Chloe Thornton
+Description: In the constructor, initialized the board array and snake array and food array to zero before allowing it to print, then only the food that allowed the score to increase would be shown.
+
+Date Reported: 4/6
+Reporter: Chloe Thornton
+Description: In Snake, whenever the score reached 4 and the snake length reached 7, the game crashed with a segmentation fault.  
+Date Fixed: 4/19
+Fixer: Chloe Thornton
+Description: Edited the size of the snake array and the function that initialized it to include more values and therefore support a larger snake. This also was fixed in part by the initialization of the snake array to zero as mentioned previously. 
